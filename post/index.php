@@ -38,7 +38,11 @@ class IndexPost
 	 **/
 	private function postAluno()
 	{
-		$aluno = new Aluno('Davi Augusto Aragão', 1470108, true);
-		$this->post->postAluno($aluno);
+		$alunoDavi = new Aluno('Davi Augusto Aragão', 1470108, 1);
+		$alunoLucas = new Aluno('Lucas Monari', 123456, 1);
+		$alunoBill = new Aluno('Bill Gates', 0000, 0);
+		$this->post->postAluno($alunoDavi);
+		$this->post->postAluno($alunoLucas);
+		$this->post->postAluno($alunoBill);
 	}
 }

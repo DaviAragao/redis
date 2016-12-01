@@ -35,8 +35,12 @@ class Get
 	 **/
 	public function getAluno($prontuario)
 	{
-		$aluno = '';
-		print_r($this->redis->hGetAll('aluno:' . $prontuario));
+		//print_r($this->redis->hGetAll('aluno:' . $prontuario));
+		$aluno = new Aluno(
+			$this->redis->hGet('aluno:' . $prontuario, 'nome'),
+			$this->redis->hGet('aluno:' . $prontuario, 'prontuario'),
+			$this->redis->hGet('aluno:' . $prontuario, 'isNerd')
+		);
 		return $aluno;
 	}
 }

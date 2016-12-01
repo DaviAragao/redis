@@ -1,31 +1,32 @@
 <?php
+include_once 'genericTO.php';
 /**
  * Aluno do Instituto Federal de São Paulo - Boituva.
  *
  * @author Davi Aragão
  **/
-class Aluno
+class Aluno extends GenericTO
 {
 	/**
 	 * Nome do aluno.
 	 *
 	 * @var string
 	 **/
-	private $nome;
+	protected $nome;
 
 	/**
 	 * Prontuario do aluno
 	 *
 	 * @var int
 	 **/
-	private $prontuario;
+	public $prontuario;
 
 	/**
 	 * Diz se o aluno é Nerd ou não.
 	 *
 	 * @var boolean
 	 **/
-	private $isNerd;
+	protected $isNerd;
 
 	/**
 	 * Construtor
@@ -44,14 +45,16 @@ class Aluno
 	}
 
 	/**
-	 * Retorna o prontuario do aluno.
+	 * Imprime o aluno.
 	 *
-	 * @param 
-	 * @return int $this->prontuario.
+	 * @return void
 	 * @author Casa Publicadora Brasileira - Davi Aragão
 	 **/
-	public function getProntuario()
+	public function printAluno()
 	{
-		return $this->prontuario;
+		$frase = ($this->isNerd) ? 'Esse cara é Nerd!' : 'Definitivamente esse cara não sabe nada!';
+		echo "<p><strong>Nome: </strong>" . $this->nome . "</p>";
+		echo "<p><strong>Prontuario: </strong>" . $this->prontuario . "</p>";
+		echo "<p>" . $frase . "</p><hr>";
 	}
 }

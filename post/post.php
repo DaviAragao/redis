@@ -35,6 +35,8 @@ class Post
 	 **/
 	public function postAluno($aluno)
 	{
-		$this->redis->hMSet('aluno:' . $aluno->getProntuario(), (array) $aluno);
+		//$this->redis->delete('aluno:' . $aluno->prontuario);
+		//print_r($aluno->thisToArray());
+		$this->redis->hMSet('aluno:' . $aluno->prontuario, $aluno->thisToArray());
 	}
 }

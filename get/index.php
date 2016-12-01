@@ -38,6 +38,8 @@ class IndexGet
 	 **/
 	private function getAluno()
 	{
-		print_r($this->get->getAluno(1470108));
+		$this->get->getAluno(1470108)->printAluno();
+		$this->get->getAluno(123456)->printAluno();
+		$this->get->getAluno(0000)->printAluno();
 	}
 }
