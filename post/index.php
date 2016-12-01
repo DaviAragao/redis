@@ -27,6 +27,7 @@ class IndexPost
 	{
 		$this->post = new Post();
 		$this->postAluno();
+		$this->postData();
 	}
 
 	/**
@@ -44,5 +45,17 @@ class IndexPost
 		$this->post->postAluno($alunoDavi);
 		$this->post->postAluno($alunoLucas);
 		$this->post->postAluno($alunoBill);
+	}
+
+	/**
+	 * Salva informações aleatórias no banco do redis para testar perfomace.
+	 *
+	 * @param 
+	 * @return void
+	 * @author Casa Publicadora Brasileira - Davi Aragão
+	 **/
+	private function postData()
+	{
+		$this->post->postData(1000000);
 	}
 }

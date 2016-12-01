@@ -39,4 +39,17 @@ class Post
 		//print_r($aluno->thisToArray());
 		$this->redis->hMSet('aluno:' . $aluno->prontuario, $aluno->thisToArray());
 	}
+
+	/**
+	 * Salva massa de dados sem relevância no redis para teste.
+	 *
+	 * @param int $keyEnd - Quantidade de valores que serão gerados.
+	 * @return void
+	 * @author Casa Publicadora Brasileira - Davi Aragão
+	 **/
+	public function postData($keyEnd)
+	{
+		for ($i = 1; $i <= $keyEnd; $i++)
+			$this->redis->lpush("teste", hash("md5", $i));
+	}
 }

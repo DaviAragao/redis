@@ -27,6 +27,8 @@ class IndexGet
 	{
 		$this->get = new Get();
 		$this->getAluno();
+		$this->getAllMysql();
+		$this->getAllRedis();
 	}
 
 	/**
@@ -41,5 +43,29 @@ class IndexGet
 		$this->get->getAluno(1470108)->printAluno();
 		$this->get->getAluno(123456)->printAluno();
 		$this->get->getAluno(0000)->printAluno();
+	}
+
+	/**
+	 * Exibe todo o conteudo a partir de getAllMysql em Get.
+	 *
+	 * @param 
+	 * @return void
+	 * @author Casa Publicadora Brasileira - Davi Aragão
+	 **/
+	private function getAllMysql()
+	{
+		$this->get->getAllMysql();
+	}
+
+	/**
+	 * Exibe todas as informações de teste do redis para avaliar performace.
+	 *
+	 * @param 
+	 * @return void
+	 * @author Casa Publicadora Brasileira - Davi Aragão
+	 **/
+	private function getAllRedis()
+	{
+		$this->get->getAllRedis();
 	}
 }

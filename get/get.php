@@ -14,6 +14,13 @@ class Get
 	private $redis;
 
 	/**
+	 * Armazena o objeto da conexão com o banco de dados MySQL.
+	 *
+	 * @var PDO
+	 **/
+	private $mysql;
+
+	/**
 	 * Construtor
 	 *
 	 * @param 
@@ -24,6 +31,8 @@ class Get
 	{
 		$conn = new RedisConnection('serverswm.ddns.net');
 		$this->redis = $conn->getRedis();
+		$conn = new MysqlConnection("redis", "root", "pontoall1", "serverswm.ddns.net");
+		$this->mysql = $conn->getMysql();
 	}
 
 	/**
@@ -42,5 +51,31 @@ class Get
 			$this->redis->hGet('aluno:' . $prontuario, 'isNerd')
 		);
 		return $aluno;
+	}
+
+	/**
+	 * Exibe todos os valores da tabela slow_table.
+	 *
+	 * @param 
+	 * @return void
+	 * @author Casa Publicadora Brasileira - Davi Aragão
+	 **/
+	public function getAllMysql()
+	{
+		$sql = "SELECT * FROM slow_table";
+		foreach ($this->mysql->query($sql) as $row)
+			print_r($row);
+	}
+
+	/**
+	 * Exibe todas as informações do Redis para teste de performace.
+	 *
+	 * @param 
+	 * @return void
+	 * @author Casa Publicadora Brasileira - Davi Aragão
+	 **/
+	public function getAllRedis()
+	{
+		
 	}
 }
